@@ -53,7 +53,7 @@
             <h3>Mascotas</h3>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Nuevo
-              </button>
+            </button>
         </div>
 
         <!--MODAL-->
@@ -70,7 +70,7 @@
                         <form id="form">
                             <div class="row">
                               <div class="col">                
-                                <select class="form-select" aria-label="Default select example" id="tipo">
+                                <select id="tipo" class="form-select" aria-label="Default select example">
                                     <option selected>Tipo de Animal</option>
                                     <option value="1">Perro</option>
                                     <option value="2">Gato</option>
@@ -80,22 +80,22 @@
                               </div>
                             </div>
 
-                            <div class="row">
+                            <div class="row2">
                                 <div class="col">                
                                     <div class="mb-3">
-                                      <input id="nombre" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre">
+                                      <input id="nombre" type="text" class="form-control" placeholder="Nombre">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col">                
-                                    <select class="form-select" aria-label="Default select example" id="dueno">
+                                    <select id="dueno" class="form-select" aria-label="Default select example">
                                         <option selected>Dueño</option>
-                                        <option value="1">Esteban</option>
-                                        <option value="2">Julian</option>
-                                        <option value="3">John</option>
-                                        <option value="4">Felix</option>
+                                        <option>Esteban</option>
+                                        <option>Julian</option>
+                                        <option>John</option>
+                                        <option>Felix</option>
                                     </select>
                                 </div>
                             </div>
@@ -116,9 +116,9 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Dueño</th>
                     <th scope="col"></th>
                 </tr>
             </thead>

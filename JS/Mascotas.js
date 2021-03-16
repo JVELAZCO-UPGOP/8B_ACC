@@ -4,10 +4,9 @@ const dueno = document.getElementById("dueno");
 const indice = document.getElementById("indice");
 const form = document.getElementById("form");
 const btnGuardar = document.getElementById("btn-guardar");
-const listaMascotas = document.getElementById("lista-mascotas");
+const listamascotas = document.getElementById("lista-mascotas");
 
-let mascotas = [
-    {
+let mascotas = [{
         tipo: "Gato",
         nombre: "Manchas",
         dueno: "Esteban"
@@ -19,8 +18,8 @@ let mascotas = [
     }
 ];
 
-function listarMascotas(){
-    const htmlMascotas = mascotas.map((mascota,index)=>`<tr>
+function listarmascotas() {
+    const htmlmascotas = mascotas.map((mascota, index) => `<tr>
     <th scope="row">${index}</th>
     <td>${mascota.tipo}</td>
     <td>${mascota.nombre}</td>
@@ -32,12 +31,12 @@ function listarMascotas(){
         </div>
     </td>
     </tr>`).join("");
-    listaMascotas.innerHTML=htmlMascotas;
-    Array.from(document.getElementsByClassName("editar")).forEach((botonEditar,index)=>botonEditar.onclick = editar(index));
-    Array.from(document.getElementsByClassName("eliminar")).forEach((botonEliminar,index)=>botonEliminar.onclick = eliminar(index));
+    listamascotas.innerHTML = htmlmascotas;
+    Array.from(document.getElementsByClassName("editar")).forEach((botonEditar, index) => botonEditar.onclick = editar(index));
+    Array.from(document.getElementsByClassName("eliminar")).forEach((botonEliminar, index) => botonEliminar.onclick = eliminar(index));
 }
 
-function enviarDatos(evento){
+function enviarDatos(evento) {
     evento.preventDefault();
     const datos = {
         tipo: tipo.value,
@@ -45,7 +44,7 @@ function enviarDatos(evento){
         dueno: dueno.value
     };
     const accion = btnGuardar.innerHTML;
-    switch(accion){
+    switch (accion) {
         case "Editar":
             mascotas[indice.value] = datos;
             break;
@@ -53,37 +52,37 @@ function enviarDatos(evento){
             mascotas.push(datos);
             break;
     }
-    listarMascotas();
+    listarmascotas();
     resetModal();
 }
 
-function editar(index){
-    return function cuandoClickeo(){
+function editar(index) {
+    return function cuandoClickeo() {
         btnGuardar.innerHTML = "Editar";
         const mascota = mascotas[index];
         nombre.value = mascota.nombre;
-        dueno.value  = mascota.dueno;
+        dueno.value = mascota.dueno;
         tipo.value = mascota.tipo;
         indice.value = index;
     }
 }
 
-function resetModal(){
+function resetModal() {
     nombre.value = "";
-    dueno.value  = "Dueño";
+    dueno.value = "Dueño";
     tipo.value = "Tipo de Animal";
     indice.value = "";
     btnGuardar.innerHTML = "Crear";
 }
 
-function eliminar(index){
-    return function clickEliminar(){
-        mascotas = mascotas.filter((mascota,indiceMascota)=>indiceMascota !== index);
-        listarMascotas();
+function eliminar(index) {
+    return function clickEliminar() {
+        mascotas = mascotas.filter((mascota, indiceMascota) => indiceMascota !== index);
+        listarmascotas();
     }
 }
 
-listarMascotas();
+listarmascotas();
 
 form.onsubmit = enviarDatos;
 btnGuardar.onclick = enviarDatos;

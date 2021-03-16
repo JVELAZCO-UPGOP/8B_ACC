@@ -5,10 +5,9 @@ const identificacion = document.getElementById("identificacion");
 const indice = document.getElementById("indice");
 const form = document.getElementById("form");
 const btnGuardar = document.getElementById("btn-guardar");
-const listaVeterinarias = document.getElementById("lista-veterinarias");
+const listaveterinarias = document.getElementById("lista-veterinarias");
 
-let veterinarias = [
-    {
+let veterinarias = [{
         nombre: "Wendy",
         apellido: "Yañez Esquivel",
         pais: "Mexico",
@@ -22,8 +21,8 @@ let veterinarias = [
     }
 ];
 
-function listarVeterinarias(){
-    const htmlVeterinarias = veterinarias.map((veterinaria,index)=>`<tr>
+function listarveterinarias() {
+    const htmlveterinarias = veterinarias.map((veterinaria, index) => `<tr>
     <th scope="row">${index}</th>
     <td>${veterinaria.nombre}</td>
     <td>${veterinaria.apellido}</td>
@@ -36,12 +35,12 @@ function listarVeterinarias(){
         </div>
     </td>
     </tr>`).join("");
-    listaVeterinarias.innerHTML=htmlVeterinarias;
-    Array.from(document.getElementsByClassName("editar")).forEach((botonEditar,index)=>botonEditar.onclick = editar(index));
-    Array.from(document.getElementsByClassName("eliminar")).forEach((botonEliminar,index)=>botonEliminar.onclick = eliminar(index));
+    listaveterinarias.innerHTML = htmlveterinarias;
+    Array.from(document.getElementsByClassName("editar")).forEach((botonEditar, index) => botonEditar.onclick = editar(index));
+    Array.from(document.getElementsByClassName("eliminar")).forEach((botonEliminar, index) => botonEliminar.onclick = eliminar(index));
 }
 
-function enviarDatos(evento){
+function enviarDatos(evento) {
     evento.preventDefault();
     const datos = {
         nombre: nombre.value,
@@ -50,7 +49,7 @@ function enviarDatos(evento){
         identificacion: identificacion.value
     };
     const accion = btnGuardar.innerHTML;
-    switch(accion){
+    switch (accion) {
         case "Editar":
             veterinarias[indice.value] = datos;
             break;
@@ -58,12 +57,12 @@ function enviarDatos(evento){
             veterinarias.push(datos);
             break;
     }
-    listarVeterinarias();
+    listarveterinarias();
     resetModal();
 }
 
-function editar(index){
-    return function cuandoClickeo(){
+function editar(index) {
+    return function cuandoClickeo() {
         btnGuardar.innerHTML = "Editar";
         const veterinaria = veterinarias[index];
         nombre.value = veterinaria.nombre;
@@ -74,7 +73,7 @@ function editar(index){
     }
 }
 
-function resetModal(){
+function resetModal() {
     nombre.value = "";
     apellido.value = "";
     pais.value = "";
@@ -83,14 +82,14 @@ function resetModal(){
     btnGuardar.innerHTML = "Crear";
 }
 
-function eliminar(index){
-    return function clickEliminar(){
-        veterinarias = veterinarias.filter((veterinaria,indiceVeterinaria)=>indiceVeterinaria !== index);
-        listarVeterinarias();
+function eliminar(index) {
+    return function clickEliminar() {
+        veterinarias = veterinarias.filter((veterinaria, indiceVeterinaria) => indiceVeterinaria !== index);
+        listarveterinarias();
     }
 }
 
-listarVeterinarias();
+listarveterinarias();
 
 form.onsubmit = enviarDatos;
 btnGuardar.onclick = enviarDatos;

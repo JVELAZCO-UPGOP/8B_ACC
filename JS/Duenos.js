@@ -7,23 +7,22 @@ const form = document.getElementById("form");
 const btnGuardar = document.getElementById("btn-guardar");
 const listaDuenos = document.getElementById("lista-duenos");
 
-let duenos = [
-    {
-        nombre: "Wendy",
-        apellido: "Yañez Esquivel",
+let duenos = [{
+        nombre: "Camila",
+        apellido: "Reyes",
         pais: "Mexico",
-        identificacion: "12345"
+        identificacion: "115"
     },
     {
-        nombre: "Maia",
-        apellido: "Gonzales",
+        nombre: "Hannia",
+        apellido: "Rios",
         pais: "Argentina",
-        identificacion: "1234567890"
+        identificacion: "34567890"
     }
 ];
 
-function listarDuenos(){
-    const htmlDuenos = duenos.map((dueno,index)=>`<tr>
+function listarDuenos() {
+    const htmlDuenos = duenos.map((dueno, index) => `<tr>
     <th scope="row">${index}</th>
     <td>${dueno.nombre}</td>
     <td>${dueno.apellido}</td>
@@ -36,12 +35,12 @@ function listarDuenos(){
         </div>
     </td>
     </tr>`).join("");
-    listaDuenos.innerHTML=htmlDuenos;
-    Array.from(document.getElementsByClassName("editar")).forEach((botonEditar,index)=>botonEditar.onclick = editar(index));
-    Array.from(document.getElementsByClassName("eliminar")).forEach((botonEliminar,index)=>botonEliminar.onclick = eliminar(index));
+    listaDuenos.innerHTML = htmlDuenos;
+    Array.from(document.getElementsByClassName("editar")).forEach((botonEditar, index) => botonEditar.onclick = editar(index));
+    Array.from(document.getElementsByClassName("eliminar")).forEach((botonEliminar, index) => botonEliminar.onclick = eliminar(index));
 }
 
-function enviarDatos(evento){
+function enviarDatos(evento) {
     evento.preventDefault();
     const datos = {
         nombre: nombre.value,
@@ -50,7 +49,7 @@ function enviarDatos(evento){
         identificacion: identificacion.value
     };
     const accion = btnGuardar.innerHTML;
-    switch(accion){
+    switch (accion) {
         case "Editar":
             duenos[indice.value] = datos;
             break;
@@ -62,19 +61,19 @@ function enviarDatos(evento){
     resetModal();
 }
 
-function editar(index){
-    return function cuandoClickeo(){
+function editar(index) {
+    return function cuandoClickeo() {
         btnGuardar.innerHTML = "Editar";
         const dueno = duenos[index];
-        nombre.value =  dueno.nombre;
-        apellido.value =  dueno.apellido;
-        pais.value =  dueno.pais;
-        identificacion.value =  dueno.identificacion;
+        nombre.value = dueno.nombre;
+        apellido.value = dueno.apellido;
+        pais.value = dueno.pais;
+        identificacion.value = dueno.identificacion;
         indice.value = index;
     }
 }
 
-function resetModal(){
+function resetModal() {
     nombre.value = "";
     apellido.value = "";
     pais.value = "";
@@ -83,9 +82,9 @@ function resetModal(){
     btnGuardar.innerHTML = "Crear";
 }
 
-function eliminar(index){
-    return function clickEliminar(){
-        duenos = duenos.filter((dueno,indiceDueno)=>indiceDueno !== index);
+function eliminar(index) {
+    return function clickEliminar() {
+        duenos = duenos.filter((dueno, indiceDueno) => indiceDueno !== index);
         listarDuenos();
     }
 }

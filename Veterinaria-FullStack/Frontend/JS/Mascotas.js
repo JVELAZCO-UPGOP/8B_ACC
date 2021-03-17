@@ -1,33 +1,29 @@
+const tipo = document.getElementById("tipo");
 const nombre = document.getElementById("nombre");
-const apellido = document.getElementById("apellido");
-const pais = document.getElementById("pais");
-const identificacion = document.getElementById("identificacion");
+const dueno = document.getElementById("dueno");
 const indice = document.getElementById("indice");
 const form = document.getElementById("form");
 const btnGuardar = document.getElementById("btn-guardar");
-const listaVeterinarias = document.getElementById("lista-veterinarias");
+const listamascotas = document.getElementById("lista-mascotas");
 
-let veterinarias = [{
-        nombre: "Wendy",
-        apellido: "Yañez Esquivel",
-        pais: "Mexico",
-        identificacion: "12345"
+let mascotas = [{
+        tipo: "Gato",
+        nombre: "Manchas",
+        dueno: "Esteban"
     },
     {
-        nombre: "Maia",
-        apellido: "Gonzales",
-        pais: "Argentina",
-        identificacion: "1234567890"
+        tipo: "Perro",
+        nombre: "Tylarzz",
+        dueno: "Julian"
     }
 ];
 
-function listarVeterinarias() {
-    const htmlVeterinarias = veterinarias.map((veterinaria, index) => `<tr>
+function listarmascotas() {
+    const htmlmascotas = mascotas.map((mascota, index) => `<tr>
     <th scope="row">${index}</th>
-    <td>${veterinaria.nombre}</td>
-    <td>${veterinaria.apellido}</td>
-    <td>${veterinaria.pais}</td>
-    <td>${veterinaria.identificacion}</td>
+    <td>${mascota.tipo}</td>
+    <td>${mascota.nombre}</td>
+    <td>${mascota.dueno}</td>
     <td>
         <div class="btn-group" role="group" aria-label="Basic example">
             <button type="button" class="btn btn-primary editar" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-edit"></i></button>
@@ -35,7 +31,7 @@ function listarVeterinarias() {
         </div>
     </td>
     </tr>`).join("");
-    listaVeterinarias.innerHTML = htmlVeterinarias;
+    listamascotas.innerHTML = htmlmascotas;
     Array.from(document.getElementsByClassName("editar")).forEach((botonEditar, index) => botonEditar.onclick = editar(index));
     Array.from(document.getElementsByClassName("eliminar")).forEach((botonEliminar, index) => botonEliminar.onclick = eliminar(index));
 }
@@ -43,53 +39,50 @@ function listarVeterinarias() {
 function enviarDatos(evento) {
     evento.preventDefault();
     const datos = {
+        tipo: tipo.value,
         nombre: nombre.value,
-        apellido: apellido.value,
-        pais: pais.value,
-        identificacion: identificacion.value
+        dueno: dueno.value
     };
     const accion = btnGuardar.innerHTML;
     switch (accion) {
         case "Editar":
-            veterinarias[indice.value] = datos;
+            mascotas[indice.value] = datos;
             break;
         default:
-            veterinarias.push(datos);
+            mascotas.push(datos);
             break;
     }
-    listarVeterinarias();
+    listarmascotas();
     resetModal();
 }
 
 function editar(index) {
     return function cuandoClickeo() {
         btnGuardar.innerHTML = "Editar";
-        const veterinaria = veterinarias[index];
-        nombre.value = veterinaria.nombre;
-        apellido.value = veterinaria.apellido;
-        pais.value = veterinaria.pais;
-        identificacion.value = veterinaria.identificacion;
+        const mascota = mascotas[index];
+        nombre.value = mascota.nombre;
+        dueno.value = mascota.dueno;
+        tipo.value = mascota.tipo;
         indice.value = index;
     }
 }
 
 function resetModal() {
     nombre.value = "";
-    apellido.value = "";
-    pais.value = "";
-    identificacion.value = "";
+    dueno.value = "Dueño";
+    tipo.value = "Tipo de Animal";
     indice.value = "";
     btnGuardar.innerHTML = "Crear";
 }
 
 function eliminar(index) {
     return function clickEliminar() {
-        veterinarias = veterinarias.filter((veterinaria, indiceVeterinaria) => indiceVeterinaria !== index);
-        listarVeterinarias();
+        mascotas = mascotas.filter((mascota, indiceMascota) => indiceMascota !== index);
+        listarmascotas();
     }
 }
 
-listarVeterinarias();
+listarmascotas();
 
 form.onsubmit = enviarDatos;
 btnGuardar.onclick = enviarDatos;

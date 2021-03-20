@@ -1,13 +1,26 @@
-module.exports = function consultasHandler(consultas) {
+module.exports = function consultasHandler({
+    consultas,
+    veterinarias,
+    mascotas
+}) {
     return {
         get: (data, callback) => {
             if (typeof data.indice !== "undefined") {
+                console.log("handler consultas", { data });
                 if (consultas[data.indice]) {
                     return callback(200, consultas[data.indice]);
                 }
                 return callback(404, { mensaje: `consulta con indice ${ data.indice } no encontrada` });
             }
-            callback(200, consultas);
+            const consultasConRelaciones = consultas.map((consulta) => ({
+                ...consulta,
+                mascota: {...mascotas[consulta.mascota], id: consulta.mascota },
+                veterinaria: {
+                    ...veterinarias[consulta.veterinaria],
+                    id: consulta.veterinaria,
+                },
+            }));
+            callback(200, consultasConRelaciones);
         },
         post: (data, callback) => {
             let nuevaConsulta = data.payload;
@@ -42,5 +55,5 @@ module.exports = function consultasHandler(consultas) {
             }
             callback(400, { mensaje: "Indice no enviado" });
         },
-    }
-}
+    };
+};

@@ -18,7 +18,12 @@ module.exports = {
         { nombre: "Yoss", apellido: "Nuñes ", documento: "12123" },
         { nombre: "Pedro", apellido: "Rios", documento: "123" },
     ],
-    consultas: [
-        { mascota: 0, veterinaria: 0, fechaCreacion: new Date(), fechaEdicion: new Date(), historia: "", diagnostico: "" },
-    ],
+    consultas: [{
+        mascota: 0,
+        veterinaria: 0,
+        fechaCreacion: new Date(),
+        fechaEdicion: new Date(),
+        historia: "",
+        diagnostico: "diagnostico"
+    }, ],
 }

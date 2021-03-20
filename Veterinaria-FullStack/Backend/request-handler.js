@@ -8,6 +8,18 @@ module.exports = (req, res) => {
     const ruta = urlParseada.pathname;
     const rutaLimpia = ruta.replace(/^\/+|\/+$/g, '');
     const metodo = req.method.toLowerCase();
+
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Request-Methods", "OPTIONS,GET,PUT,DELETE,POST");
+    res.setHeader("Access-Control-Allow-Methods", "OPTIONS,GET,PUT,DELETE,POST");
+    res.setHeader("Access-Control-Allow-Headers", "*");
+
+    if (metodo === "options") {
+        res.writeHead(200);
+        res.end();
+        return;
+    }
+
     const { query = {} } = urlParseada;
     const { headers = {} } = req;
 

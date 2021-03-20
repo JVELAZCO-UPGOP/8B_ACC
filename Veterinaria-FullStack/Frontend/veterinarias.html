@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/CSS/styles.css">
+    <link rel="stylesheet" href="/Veterinaria-FullStack/Frontend/CSS/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <title>Veterinarias</title>
@@ -51,10 +51,36 @@
         <!--BOTON-NUEVO-->
         <div class="actions-menu">
             <h3>Veterinarias</h3>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Nuevo
-            </button>
+            <div class="actions-menu-content">
+
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Nuevo
+                </button>
+
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Oops!</strong> Algo hicimos mal, por favor vuelve a intentarlo!.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+            </div>
         </div>
+
+        <!--TABLA mascotas-->
+        <br>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Documento</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody id="lista-veterinarias">
+
+            </tbody>
+        </table>
 
         <!--MODAL-->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -73,7 +99,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-3">
-                                        <input id="identificacion" type="text" class="form-control" placeholder="Identificacion">
+                                        <input id="documento" type="text" class="form-control" placeholder="Documento">
                                     </div>
                                 </div>
                             </div>
@@ -93,22 +119,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row">
-                                <div class="col">
-                                    <select id="pais" class="form-select" aria-label="Default select example">
-                                      <option selected>Pais</option>
-                                      <option>Colombia</option>
-                                      <option>Ecuador</option>
-                                      <option>Peru</option>
-                                      <option>Mexico</option>
-                                      <option>Bolivia</option>
-                                      <option>Venezuela</option>
-                                      <option>Chile</option>
-                                      <option>Argentina</option>
-                                  </select>
-                                </div>
-                            </div>
                         </form>
                     </div>
 
@@ -119,24 +129,6 @@
                 </div>
             </div>
         </div>
-
-        <!--TABLA mascotas-->
-        <br>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellido</th>
-                    <th scope="col">Pais</th>
-                    <th scope="col">Identificacion</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody id="lista-veterinarias">
-
-            </tbody>
-        </table>
     </div>
 
     <script src="/Veterinaria-FullStack/Frontend/JS/Veterinarias.js"></script>

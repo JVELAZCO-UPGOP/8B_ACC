@@ -1,8 +1,8 @@
 const recursos = require("./recursos");
-const mascotas = require("./Rutas/mascotas");
-const veterinarias = require("./Rutas/veterinarias");
-const duenos = require("./Rutas/duenos");
-const consultas = require("./Rutas/consultas");
+const mascotas = require("./rutas/mascotas");
+const veterinarias = require("./rutas/veterinarias");
+const duenos = require("./rutas/duenos");
+const consultas = require("./rutas/consultas");
 
 module.exports = {
     ruta: (data, callback) => {

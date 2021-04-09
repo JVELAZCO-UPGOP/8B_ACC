@@ -5,7 +5,7 @@ import './Tabla.css';
 import './Encabezado.css';
 
 function Tabla(){
-    const[mascotas, setMascotass] = useState([
+    const[mascotas, setMascotas] = useState([
         {
             tipo: "Gato",
             nombre: "manchas",

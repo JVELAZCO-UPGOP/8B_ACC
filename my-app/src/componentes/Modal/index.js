@@ -1,65 +1,68 @@
 import React from "react";
+import ModalHeader from "./ModalHeader";
+import Select from "../Select";
+import Input from "../Input";
+import ModalFooter from "./ModalFooter";
+import "./Modal.css";
 
-function Modal(){
+const tiposMascota=[
+    {valor:"Perro", etiqueta:"Perro"},
+    {valor:"Gato", etiqueta:"Gato"},
+    {valor: "Pájaro", etiqueta:"Pájaro"},
+    {valor: "Otro", etiqueta:"Otro"}
+]
+
+const duenos=[
+    {valor:"Esteban", etiqueta:"Esteban"},
+    {valor:"Julian", etiqueta:"Julian"},
+    {valor: "John", etiqueta:"John"},
+    {valor: "Felix", etiqueta:"Felix"},
+    {valor: "Pepe", etiqueta:"Pepe"},
+    {valor: "Camila", etiqueta:"Camila"},
+    {valor: "Yoss", etiqueta:"Yoss"},
+    {valor: "Pedro", etiqueta:"Pedro"},
+    {valor: "Logan", etiqueta:"Logan"},
+]
+
+function Modal({ cambiarModal =()=>{}}){
     return(
-        <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <>
+        <div className="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content">
-    
-                    <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLabel">Nueva Mascota</h5>
-                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-    
+                    <ModalHeader cambiarModal = { cambiarModal }/>
                     <div className="modal-body">
                         <form id="form">
-                            <input type="hidden" id="indice"/>
                             <div className="row">
                                 <div className="col">
-                                    <select id="tipo" className="form-select" aria-label="Default select example">
-                                    <option selected>Tipo de Animal</option>
-                                    <option>Perro</option>
-                                    <option>Gato</option>
-                                    <option>Pajaro</option>
-                                    <option>Otro</option>
-                                </select>
+                                   <Select options={tiposMascota}
+                                   nombreCampo="tipo animal"/>
                                 </div>
                             </div>
-    
+
                             <div className="row2">
                                 <div className="col">
                                     <div class="mb-3">
-                                        <input id="nombre" type="text" className="form-control" placeholder="Nombre"/>
+                                        <Input tipo="text" nombreCampo="Nombre"/>
                                     </div>
                                 </div>
                             </div>
     
                             <div className="row">
                                 <div className="col">
-                                    <select id="dueno" className="form-select" aria-label="Default select example">
-                                        <option selected>Dueño</option>
-                                        <option>Esteban</option>
-                                        <option>Julian</option>
-                                        <option>John</option>
-                                        <option>Felix</option>
-                                        <option>Pepe</option>
-                                        <option>Camila</option>
-                                        <option>Yoss</option>
-                                        <option>Pedro</option>
-                                        <option>Logan</option>
-                                    </select>
+                                    <Select options={duenos}
+                                   nombreCampo="dueño"/>
                                 </div>
                             </div>
                         </form>
                     </div>
-    
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" className="btn btn-primary" data-bs-dismiss="modal" id="btn-guardar">Crear</button>
-                    </div>
+
+                    <ModalFooter cambiarModal = { cambiarModal }/>
                 </div>
             </div>
         </div>
+        <div class="modal-backdrop fade show"></div>
+        </>
     );
 }
 

@@ -24,10 +24,15 @@ const duenos=[
     {valor: "Logan", etiqueta:"Logan"},
 ]
 
-function Modal({ cambiarModal =()=>{}}){
+function Modal({ 
+    cambiarModal =()=>{},
+    manejarInput = ()=>{},
+    crearEntidad = () =>{},
+    objeto = {} 
+}){
     return(
         <>
-        <div className="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content">
                     <ModalHeader cambiarModal = { cambiarModal }/>
@@ -35,33 +40,51 @@ function Modal({ cambiarModal =()=>{}}){
                         <form id="form">
                             <div className="row">
                                 <div className="col">
-                                   <Select options={tiposMascota}
-                                   nombreCampo="tipo animal"/>
+                                  <Select 
+                                   options={tiposMascota}
+                                   nombreCampo="tipoMascota"
+                                   onChange={manejarInput}
+                                   placeHolder="Tipo Animal"
+                                   value={objeto.tipo}
+                                   />
                                 </div>
                             </div>
 
                             <div className="row2">
                                 <div className="col">
-                                    <div class="mb-3">
-                                        <Input tipo="text" nombreCampo="Nombre"/>
+                                    <div className="mb-3">
+                                        <Input 
+                                          tipo="text" 
+                                          nombreCampo="nombre"
+                                          onInput={manejarInput}
+                                          placeHolder="Nombre"
+                                          value={objeto.nombre}
+                                          />
                                     </div>
                                 </div>
                             </div>
     
                             <div className="row">
                                 <div className="col">
-                                    <Select options={duenos}
-                                   nombreCampo="dueño"/>
+                                    <Select 
+                                     options={duenos}
+                                     nombreCampo="dueno"
+                                     onChange={manejarInput}
+                                     placeHolder="Dueño"
+                                     value={objeto.dueno}
+                                     />
                                 </div>
                             </div>
                         </form>
                     </div>
 
-                    <ModalFooter cambiarModal = { cambiarModal }/>
+                    <ModalFooter 
+                      cambiarModal = { cambiarModal }
+                      crearEntidad = { crearEntidad }/>
                 </div>
             </div>
         </div>
-        <div class="modal-backdrop fade show"></div>
+        <div className="modal-backdrop fade show"></div>
         </>
     );
 }

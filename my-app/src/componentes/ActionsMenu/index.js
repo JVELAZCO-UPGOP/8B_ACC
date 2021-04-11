@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import './ActionsMenu.css'
 import Alert from '../Alert/index';
 
-function ActionMenu({cambiarModal=()=>{}}){
+function ActionMenu({cambiarModal=()=>{}, titulo}){
     return (
         <div className="actions-menu">
-            <h3>Mascotas</h3>
+            <h3>{titulo}</h3>
             <div className="actions-menu-content"> 
                 <button 
                 type="button" 
@@ -15,7 +15,6 @@ function ActionMenu({cambiarModal=()=>{}}){
                 onClick= { cambiarModal }>
                     Nuevo
                 </button>
-                {/*<Alert/>*/}
             </div>
         </div>
     );

@@ -1,6 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Nav from "./componentes/Nav";
+
 import './App.css';
 import Pagina from './Pagina';
 
@@ -10,25 +11,38 @@ function App() {
       <Nav/>
       <Switch>
         <Route 
+         exact
          path="/" 
-         component={()=> <Pagina          
+         component={(props)=> (
+         <Pagina {...props}      
          titulo="Mascotas" 
-         entidad="mascotas"/>} />
-        <Route 
+         entidad="mascotas"/>
+         )} 
+         />
+        <Route  
          path="/veterinarias" 
-         component={()=> <Pagina          
+         component={(props)=> (
+         <Pagina {...props}          
          titulo="Veterinarias" 
-         entidad="veterinarias"/>} />
+         entidad="veterinarias"/>
+         )} 
+         />
         <Route 
          path="/duenos" 
-         component={()=> <Pagina          
+         component={(props)=> (
+         <Pagina {...props}          
          titulo="Dueños" 
-         entidad="duenos"/>} />
+         entidad="duenos"/>
+         )} 
+         />
         <Route 
          path="/consultas" 
-         component={()=> <Pagina          
+         component={(props)=> (
+         <Pagina {...props}          
          titulo="Consultas" 
-         entidad="consultas"/>} />      
+         entidad="consultas"/>
+         )} 
+         />      
      </Switch>
      </div>
   );

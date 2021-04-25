@@ -10,7 +10,7 @@ function Select({
 }){
     return(
         <select 
-         id="tipo"
+         id={nombreCampo}
          className="form-select"
          aria-label="Default select example"
          onChange={onChange} 
@@ -19,7 +19,11 @@ function Select({
          >
             <option value = "">Seleccione {placeHolder}</option>
             {options.map(({valor,etiqueta}, index)=>(
-              <option key={`${nombreCampo}-${index}-${valor}-${etiqueta}`} value = {valor}>{etiqueta}</option>))}
+              <option 
+              key={`${nombreCampo}-${index}-${valor}-${etiqueta}`} 
+              value = {valor}>
+              {etiqueta}
+              </option>))}
         </select>
     );
 }

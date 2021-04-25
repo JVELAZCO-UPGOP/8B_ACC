@@ -1,4 +1,5 @@
 import React from "react";
+import "./Encabezado.css";
 
 function Encabezado(props){
     if(props.columnas.length === 0) return false;
@@ -6,8 +7,10 @@ function Encabezado(props){
       <thead className="thead-light">
         <tr>
             <th scope="col">#</th>
-             { props.columnas.map((columna)=> (
-               <th scope="col">{columna}</th>
+             {props.columnas.map((columna, index)=> (
+               <th key={`titulo-${index}`} scope="col">
+               {columna}
+               </th>
              ))}
             <th scope="col"></th>
         </tr>

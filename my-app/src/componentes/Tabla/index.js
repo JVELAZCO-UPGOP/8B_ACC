@@ -8,8 +8,8 @@ function Tabla({
     entidades=[],
     editarEntidad=()=>{},
     eliminarEntidad=()=>{},
+    columnas = [],
 }){
-    const columnas = entidades.length > 0 ? Object.keys(entidades[0]) : [];
     return(  
         <table className="table table-hover">          
           <Encabezado columnas={columnas}/>  
@@ -21,6 +21,7 @@ function Tabla({
                        entidad = {entidad} 
                        editarEntidad={editarEntidad}
                        eliminarEntidad={eliminarEntidad}
+                       columnas={columnas}
                        />
                 ))}
             </tbody>

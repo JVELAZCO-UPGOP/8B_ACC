@@ -17,16 +17,24 @@ function Nav() {
               <div className="collapse navbar-collapse" id="navbarSupportedContent"> 
                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                    <li className="nav-item">
-                      <Link className="nav-link" to="/">Mascotas</Link>
+                      <Link className="nav-link" to="/">
+                         Mascotas
+                      </Link>
                    </li>
                    <li className="nav-item">
-                      <Link className="nav-link" to="/veterinarias.html">Veterinarias</Link>
+                      <Link className="nav-link" to="/veterinarias">
+                         Veterinarias
+                      </Link>
                    </li>
                    <li className="nav-item">
-                      <Link className="nav-link" to="/consultas.html">Consultas</Link>
+                      <Link className="nav-link" to="/consultas">
+                         Consultas
+                     </Link>
                    </li>
                    <li className="nav-item">
-                      <Link className="nav-link" to="/duenos.html">Dueños</Link>
+                      <Link className="nav-link" to="/duenos">
+                         Dueños
+                      </Link>
                     </li>
                 </ul>
                 <Search/>
